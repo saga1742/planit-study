@@ -75,6 +75,24 @@
   width: 50%;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color:
+}
+
+
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
@@ -119,6 +137,35 @@
 
   </script>
 
+  <table>
+  <tr>
+    <th>Upcoming Assignments</th>
+    <th>Due Date</th>
+    <th>Priority</th>
+    <th>Completed?</th>
+
+  </tr>
+  <tr>
+    <td>Calculus 3 Homework</td>
+    <td>December 25, 2019</td>
+    <td>High</td>
+    <td><input type="checkbox" name="name2"/>&nbsp;</td>
+
+  </tr>
+  <tr>
+    <td>Software Development Project</td>
+    <td>April 22, 2019</td>
+    <td>Super High</td>
+    <td><input type="checkbox" name="name2" />&nbsp;</td>
+
+  </tr>
+  <tr>
+    <td>Linear Algebra Reading</td>
+    <td>April 8, 2019</td>
+    <td>Low</td>
+    <td><input type="checkbox" name="name2" />&nbsp;</td>
+
+</table>
 
 
 <div style="margin-left:25%">
