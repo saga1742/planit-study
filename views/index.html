@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <style>
     /* The sidebar menu */
@@ -74,6 +75,7 @@
   width: 50%;
 }
 
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
@@ -82,12 +84,13 @@
     </style>
   </head>
 
-  <body style="background-image:url(../Images/blue-triangles.png)">
+  <body style="background-image:url(../img/blue-triangles.png)">
     <div class="imgcontainer">
-      <img src="../Images/Logo Transparent.png" alt="PlanIt Logo" class="img" style="width:250px;height:112.5px;" class = "center">
+      <img src="../img/Logo Transparent.png" alt="PlanIt Logo" class="img" style="width:250px;height:112.5px;" align = right>
     </div>
 
-    <div id="mySidebar" class="sidebar">
+
+    <div id="mySidebar" class="sidebar" align = left float = left display = inline>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="#">Gradebook</a>
       <a href="#">Calendar View</a>
@@ -99,8 +102,6 @@
 
     <div id="main">
       <button class="openbtn" onclick="openNav()">&#9776; Homepage</button>
-      <!-- <h2>Collapsed Sidebar</h2> -->
-      <!-- <p>Content...</p> -->
     </div>
 
     <script>
@@ -114,7 +115,10 @@
       document.getElementById("main").style.marginLeft= "0";
 
     }
-</script>
+
+  </script>
+
+
 
 <div style="margin-left:25%">
 <!-- ... page content ... -->
