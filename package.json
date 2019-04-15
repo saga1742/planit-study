@@ -1,4 +1,10 @@
 {
-  "name": "planit-study-assistant",
-  "version": "1.0.0"
+  "name": "planit-study",
+  "version": "0.3.0",
+  "engines": {
+    "node": "8.11.1"
+  },
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
