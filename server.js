@@ -22,21 +22,18 @@ var pgp = require('pg-promise')();
   user: This should be left as postgres, the default user account created when PostgreSQL was installed
   password: This the password for accessing the database.  You'll need to set a password USING THE PSQL TERMINAL THIS IS NOT A PASSWORD FOR POSTGRES USER ACCOUNT IN LINUX!
 **********************/
-const dbConfig = {
-	host: 'localhost',
-	port: process.env.PORT || 3000,
-	database: 'football_db',
-	user: 'postgres',
-	password: 'newpassword'
-};
 
-var db = pgp(dbConfig);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));//This line is necessary for us to use relative paths and access our resources directory
 
 app.get('/', function(req, res) { //when you get a request with just /, do this code
-	res.render('views/login',{ //render this page
+	res.redirect('./views/login',{ //render this page
 	});
+});
+
+app.get('/login', function(req, res) { //when you get a request for login
+  res.render('./views/login',{ //render this page
+  });
 });
