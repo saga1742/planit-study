@@ -1,10 +1,16 @@
 {
   "name": "planit-study",
+  "repository": "planit-study",
+  "license": "UNLICENSED",
   "version": "0.3.0",
   "engines": {
     "node": "8.11.1"
   },
+  "scripts": {
+  	"start": "node server.js"
+  },
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "pg-promise": "^8.6.5"
   }
 }
