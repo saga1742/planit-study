@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 //Create Database Connection
 var pgp = require('pg-promise')();
+app.listen((process.env.PORT || 3000));
 
 /**********************
   Database Connection information

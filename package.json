@@ -4,13 +4,15 @@
   "license": "UNLICENSED",
   "version": "0.3.0",
   "engines": {
-    "node": "8.11.1"
+    "node": "8.11.1",
+    "npm": "6.9.0"
   },
   "scripts": {
-  	"start": "node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.15.2",
+    "npm": "^6.9.0",
     "pg-promise": "^8.6.5"
   }
 }
