@@ -30,11 +30,10 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));//This line is necessary for us to use relative paths and access our resources directory
 
 app.get('/', function(req, res) { //when you get a request with just /, do this code
-	res.redirect('./views/login',{ //render this page
-	});
+	res.redirect('views/login.html');
 });
 
 app.get('/login', function(req, res) { //when you get a request for login
-  res.render('./views/login',{ //render this page
+  res.render('views/login.html',{ //render this page
   });
 });
