@@ -75,13 +75,84 @@
   width: 50%;
 }
 
-
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
 }
-    </style>
+
+button {
+	background-color: teal;
+	color: white;
+	padding: 14px 20px;
+	border: none;
+	cursor: pointer;
+
+	font-size: 16px;
+	font-weight: bold;
+	min-width: 140px;
+	outline: none !important;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color:
+}
+
+</style>
   </head>
 
   <body style="background-image:url(../img/blue-triangles.png)">
@@ -117,12 +188,182 @@
 
     }
 
+    </script>
+
+<div style="margin-left:1.5%">
+
+  <button id="myBtn">Add Assignment</button>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+
+      <label for="assignment_name"><b>Assignment Name:</b></label>
+      <div class="form-group">
+      	<input type="text" class="form-control" id="assignment_name" placeholder="Assignment Name" required>
+    	</div>
+
+      <p></p>
+
+      <label for="due_date"><b>Due Date:</b></label>
+  	<input type="date" id="due_date" name="due date"
+         min="01-01-2018" max="12-31-2099">
+
+      <p></p>
+      <p><b>Assignment Priority:</b></p>
+      <form>
+        <input type="radio" name="priority" id="p1" value="Super Low">Super Low<br>
+        <input type="radio" name="priority" id="p2" value="Low">Low<br>
+        <input type="radio" name="priority" id="p3" value="Medium" checked>Medium<br>
+        <input type="radio" name="priority" id="p4" value="High">High<br>
+        <input type="radio" name="priority" id="p5" value="Super High">Super High<br>
+      </form>
+
+      <label for="dropdown"><b>Remind Me:</b></label>
+      <div>
+        <select id="dropdown" name="dropdown" class="dropdown" required="required">
+          <option id="r0">I do not want to be reminded.</option>
+          <option id="r1" value="1hr">1 hour before the due date.</option>
+          <option id="r2" value="12hrs">12 hours before the due date.</option>
+          <option id="r3" value="1day">1 day before the due date.</option>
+          <option id="r4" value="2days">2 days before the due date.</option>
+          <option id="r5" value="3days">3 days before the due date.</option>
+        </select>
+      </div>
+      <p></p>
+      <button id="create_assignment">Create Assignment</button>
+
+    	</div>
+  </div>
+
+  <table>
+  <tr>
+    <th>Assignments</th>
+    <th>Due Date</th>
+    <th>Time Remaining</th>
+    <th>Priority</th>
+    <th>Completed?</th>
+
+  </tr>
+  <tr>
+    <td id="assignments_table"></td>
+    <td id="due_date_table"></td>
+    <td id="time_remaining_table"></td>
+    <td id="priority_table"></td>
+    <td><input type="checkbox" name="name2"/>&nbsp;</td>
+  </tr>
+  </table>
+
+  <script>
+
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+  var create = document.getElementById("create_assignment");
+
+  btn.onclick = function() {
+    modal.style.display = "block"; //Displays the modal
+  }
+
+  span.onclick = function() { //When the x is clicked
+    assignment_name.value = ""; //Reset assignment name
+    due_date.value = ""; //Reset due date
+    document.getElementById("p3").checked = "true"; //Reset check boxes
+    $("select").each(function() { this.selectedIndex = 0 }); //Resets reminder
+    modal.style.display = "none"; //Closes modal
+  }
+//-------------------------------------------------------------------------------------------------------------
+  create.onclick = function() {
+    document.getElementById("assignments_table").innerHTML = document.getElementById("assignment_name").value; //Populates table with assignment name
+    assignment_name.value = ""; //Reset assignment name
+    document.getElementById("due_date_table").innerHTML = document.getElementById("due_date").value; //Populates table with due date
+
+    var due_date = document.getElementById("due_date").value + " 00:00:00";
+    var countDownDate = new Date(due_date).getTime();
+
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("time_remaining_table").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s";
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("time_remaining_table").innerHTML = "DUE NOW!";
+      }
+    }, 1000);
+
+//-------------------------------------------------------------------------------------------------------------
+    if(document.getElementById("p1").checked == true) //Populate the priority column
+    {
+      document.getElementById("priority_table").innerHTML = document.getElementById("p1").value;
+    }
+    else if(document.getElementById("p2").checked == true)
+    {
+      document.getElementById("priority_table").innerHTML = document.getElementById("p2").value;
+    }
+    else if(document.getElementById("p3").checked == true)
+    {
+      document.getElementById("priority_table").innerHTML = document.getElementById("p3").value;
+    }
+    else if(document.getElementById("p4").checked == true)
+    {
+      document.getElementById("priority_table").innerHTML = document.getElementById("p4").value;
+    }
+    else if(document.getElementById("p5").checked == true)
+    {
+      document.getElementById("priority_table").innerHTML = document.getElementById("p5").value;
+    }
+
+    document.getElementById("p3").checked = "true"; //Reset check boxes
+    $("select").each(function() { this.selectedIndex = 0 }); //Resets reminder
+    modal.style.display = "none"; //Closes modal
+  }
+
+//-------------------------------------------------------------------------------------------------------------
+  var selection = document.getElementByName("dropdown")[0].value;
+  if(selection.value == "1hr") //Sends alert depending on reminder time chosen
+  {
+    if(document.getElementById("time_remaining_table").innerHTML == 0 + "d " + 1 + "h " + 0 + "m " + 0 + "s")
+    {
+      alert("Your assignment is due in one hour!");
+    }
+  }
+  else if(selection.value == "12hrs")
+  {
+    if(document.getElementById("time_remaining_table").innerHTML == 0 + "d " + 12 + "h " + 0 + "m " + 0 + "s")
+    {
+      alert("Your assignment is due in twelve hours!");
+    }
+  }
+  else if(selection.value == "1day")
+  {
+    if(document.getElementById("time_remaining_table").innerHTML == 1 + "d " + 0 + "h " + 0 + "m " + 0 + "s")
+    {
+      alert("Your assignment is due in one day!");
+    }
+  }
+  else if(selection.value == "2days")
+  {
+    if(document.getElementById("time_remaining_table").innerHTML == 2 + "d " + 0 + "h " + 0 + "m " + 0 + "s")
+    {
+      alert("Your assignment is due in two days!");
+    }
+  }
+  else if(selection.value == "3days")
+  {
+    if(document.getElementById("time_remaining_table").innerHTML == 3 + "d " + 0 + "h " + 0 + "m " + 0 + "s")
+    {
+      alert("Your assignment is due in three days!");
+    }
+  }
   </script>
 
-
-
-<div style="margin-left:25%">
-<!-- ... page content ... -->
 </div>
   </body>
 </html>
