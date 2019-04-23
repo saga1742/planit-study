@@ -235,21 +235,13 @@ tr:nth-child(even) {
     	</div>
   </div>
 
-  <table>
+  <table id="main_table">
   <tr>
     <th>Assignments</th>
     <th>Due Date</th>
     <th>Time Remaining</th>
     <th>Priority</th>
     <th>Completed?</th>
-
-  </tr>
-  <tr>
-    <td id="assignments_table"></td>
-    <td id="due_date_table"></td>
-    <td id="time_remaining_table"></td>
-    <td id="priority_table"></td>
-    <td><input type="checkbox" name="name2"/>&nbsp;</td>
   </tr>
   </table>
 
@@ -273,9 +265,17 @@ tr:nth-child(even) {
   }
 //-------------------------------------------------------------------------------------------------------------
   create.onclick = function() {
-    document.getElementById("assignments_table").innerHTML = document.getElementById("assignment_name").value; //Populates table with assignment name
+    var table = document.getElementById("main_table");
+    var row = table.insertRow();
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var check = '<input type="checkbox" id="complete" value="no">';
+    cell1.innerHTML = document.getElementById("assignment_name").value; //Populates table with assignment name
     assignment_name.value = ""; //Reset assignment name
-    document.getElementById("due_date_table").innerHTML = document.getElementById("due_date").value; //Populates table with due date
+    cell2.innerHTML = document.getElementById("due_date").value; //Populates table with due date
 
     var due_date = document.getElementById("due_date").value + " 00:00:00";
     var countDownDate = new Date(due_date).getTime();
@@ -289,37 +289,38 @@ tr:nth-child(even) {
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById("time_remaining_table").innerHTML = days + "d " + hours + "h "
+      cell3.innerHTML = days + "d " + hours + "h "
       + minutes + "m " + seconds + "s";
 
       if (distance < 0) {
         clearInterval(x);
-        document.getElementById("time_remaining_table").innerHTML = "DUE NOW!";
+        cell3.innerHTML = "DUE NOW!";
       }
     }, 1000);
 
 //-------------------------------------------------------------------------------------------------------------
     if(document.getElementById("p1").checked == true) //Populate the priority column
     {
-      document.getElementById("priority_table").innerHTML = document.getElementById("p1").value;
+      cell4.innerHTML = document.getElementById("p1").value;
     }
     else if(document.getElementById("p2").checked == true)
     {
-      document.getElementById("priority_table").innerHTML = document.getElementById("p2").value;
+      cell4.innerHTML = document.getElementById("p2").value;
     }
     else if(document.getElementById("p3").checked == true)
     {
-      document.getElementById("priority_table").innerHTML = document.getElementById("p3").value;
+      cell4.innerHTML = document.getElementById("p3").value;
     }
     else if(document.getElementById("p4").checked == true)
     {
-      document.getElementById("priority_table").innerHTML = document.getElementById("p4").value;
+      cell4.innerHTML = document.getElementById("p4").value;
     }
     else if(document.getElementById("p5").checked == true)
     {
-      document.getElementById("priority_table").innerHTML = document.getElementById("p5").value;
+      cell4.innerHTML = document.getElementById("p5").value;
     }
 
+    cell5.innerHTML = check;
     document.getElementById("p3").checked = "true"; //Reset check boxes
     $("select").each(function() { this.selectedIndex = 0 }); //Resets reminder
     modal.style.display = "none"; //Closes modal
