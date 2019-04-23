@@ -25,9 +25,17 @@ var pgp = require('pg-promise')();
   password: This the password for accessing the database.  You'll need to set a password USING THE PSQL TERMINAL THIS IS NOT A PASSWORD FOR POSTGRES USER ACCOUNT IN LINUX!
 **********************/
 const dbConfig = {
-  database: 'planit',
+  /**
   user: 'postgres',
-  password: 'newpassword'
+  password: 'newpassword',
+  host: 'localhost',
+  database: 'planit'
+  **/
+  user: 'afddzatjboqtjp',
+  password: '4c9d566245d64cb230fcdad8162bf2542b957229d484638e4e25017eced5cd3a',
+  host: 'ec2-50-17-227-28.compute-1.amazonaws.com',
+  port: '5432',
+  database: 'd9q7tmjn51k85p'
 };
 
 var db = pgp(dbConfig);
