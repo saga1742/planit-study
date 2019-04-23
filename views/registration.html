@@ -16,10 +16,19 @@
 
 <body style="background-image:url(../img/blue-triangles.png)">
 	<div class="signup-form">
-		<form>
+		<form action='/views/registration/submit' method='post'>
 			<h2>Welcome to PlanIt!</h2>
 			<p class="hint-text">Fill out the form below to create your free account.</p>
 
+			
+			<label for="fname"><b>First Name:</b></label>
+			<div class="form-group">
+        		<input type="text" class="form-control" name="fname" placeholder="First Name" required="required">
+			</div>
+			<label for="lname"><b>Last Name:</b></label>
+			<div class="form-group">
+        		<input type="text" class="form-control" name="lname" placeholder="Last Name" required="required">
+			</div>
 			<label for="email"><b>Email:</b></label>
 			<div class="form-group">
         		<input type="email" class="form-control" name="email" placeholder="Email" required="required">
