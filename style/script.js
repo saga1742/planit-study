@@ -1,3 +1,5 @@
+//This file is for the calendar
+
 window.onload = function()
 {
 	var d = new Date();
