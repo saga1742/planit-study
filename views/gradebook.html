@@ -75,13 +75,84 @@
   width: 50%;
 }
 
-
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
 }
-    </style>
+
+button {
+  background-color: teal;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 140px;
+  outline: none !important;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color:
+}
+
+</style>
   </head>
 
   <body style="background-image:url(../img/blue-triangles.png)">
@@ -119,10 +190,81 @@
 
   </script>
 
+<div style="margin-left:1.5%">
 
+  <button id="myBtn">Add Grade</button>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
 
-<div style="margin-left:25%">
-<!-- ... page content ... -->
+      <label for="class_name"><b>Class:</b></label>
+      <div class="form-group">
+        <input type="text" class="form-control" id="class_name" placeholder="Class Name" required>
+      </div>
+
+      <p></p>
+
+      <label for="assignment_name"><b>Assignment Name:</b></label>
+      <div class="form-group">
+        <input type="text" class="form-control" id="assignment_name" placeholder="Assignment Name" required>
+      </div>
+
+      <p></p>
+
+      <label for="grade_value"><b>Grade:</b></label>
+      <div class="form-group">
+        <input type="text" class="form-control" id="grade_value" placeholder="Grade Value" required>
+      </div>
+
+      <p></p>
+
+      <button id="enter_grade">Enter Grade</button>
+
+      </div>
+</div>
+
+<table>
+  <tr>
+    <th>Class</th>
+    <th>Assignment</th>
+    <th>Grade</th>
+  </tr>
+  <tr>
+    <td id="class_table"></td>
+    <td id="assignment_table"></td>
+    <td id="grade_table"></td>
+  </tr>
+  </table>
+
+  <script>
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    var create = document.getElementById("enter_grade");
+
+    btn.onclick = function() {
+      modal.style.display = "block"; //Displays the modal
+    }
+
+    span.onclick = function() { //When the x is clicked
+        class_name.value = ""; //Reset class name
+        assignment_name.value = ""; //Reset assignment name
+        grade_value.value = ""; //Reset grade
+        //  $("select").each(function() { this.selectedIndex = 0 }); //Resets reminder
+        modal.style.display = "none"; //Closes modal
+      }
+      create.onclick = function() {
+        document.getElementById("class_table").innerHTML = document.getElementById("class_name").value; //Populates table with class name
+        class_name.value = ""; //Reset class name
+        document.getElementById("assignment_table").innerHTML = document.getElementById("assignment_name").value; //Populates table with assignment name
+        assignment_name.value = ""; //Reset assignment name
+        document.getElementById("grade_table").innerHTML = document.getElementById("grade_value").value; //Populates table with grade 
+        grade_value.value = ""; //Reset grade 
+      }
+
+  </script>
+
 </div>
   </body>
 </html>
