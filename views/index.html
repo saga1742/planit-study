@@ -16,6 +16,10 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+
+    <link type="text/css" rel="stylesheet" href="../style/style.css">
+    <script type="text/javascript" src="../style/script.js"></script>
+
     <style>
     /* The sidebar menu */
 .sidebar {
@@ -279,231 +283,42 @@
           </script>
         </div>
         <div class="card-body">Content</div> 
-        <div class="card-footer">Footer</div>
+        <div class="card-footer">
+          <p>Want to view all of your assignments? Click <a href="assignments.html">here</a></p>
+        </div>
       </div>
   </div>
 </div>
 
 <!-- 
-    Both Month Calendars: Sarah 
+    Both Month Calendars 
 -->
 
 <div class="card-deck">
-  <div class="card">
+  <div class="card" style="background-color: transparent">
     <div class="card-body">
-      <!--<<h3 id="c_month">Prints current Month</h3>
-        script>
-          var month = new Array();
-          month[0] = "January";
-          month[1] = "February";
-          month[2] = "March";
-          month[3] = "April";
-          month[4] = "May";
-          month[5] = "June";
-          month[6] = "July";
-          month[7] = "August";
-          month[8] = "September";
-          month[9] = "October";
-          month[10] = "November";
-          month[11] = "December";
-
-          var d = new Date();
-          var n = month[d.getMonth()];
-          document.getElementById("c_month").innerHTML = n;
-        </script> -->
-        <div class="month">      
-          <ul>
-            <li>
-              April<br>
-              <span style="font-size:18px">2019</span>
-            </li>
-          </ul>
+      <h3 id="c_month"></h3>
+        <div id="calendar-container">
+          <div id="calendar-header">
+            <span id="calendar-month-year"></span>
+          </div>
+          <div id ="calendar-dates">
+          </div>
         </div>
-
-        <ul class="weekdays">
-          <li>Su</li>
-          <li>Mo</li>
-          <li>Tu</li>
-          <li>We</li>
-          <li>Th</li>
-          <li>Fr</li>
-          <li>Sa</li>
-        </ul>
-
-        <ul class="days">  
-          <li> </li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li>7</li>
-          <li>8</li>
-          <li>9</li>
-          <li>10</li>
-          <li>11</li>
-          <li>12</li>
-          <li>13</li>
-          <li>14</li>
-          <li>15</li>
-          <li>16</li>
-          <li>17</li>
-          <li>18</li>
-          <li>19</li>
-          <li>20</li>
-          <li>21</li>
-          <li>22</li>
-          <li>23</li>
-          <li>24</li>
-          <li><span class="active">25</span></li>
-          <li>26</li>
-          <li>27</li>
-          <li>28</li>
-          <li>29</li>
-          <li>30</li>
-        </ul>
     </div>
   </div>
-  <div class="card">
+  <div class="card" style="background-color: transparent">
     <div class="card-body">
-      <!--<h3 id="n_month">Prints next Month</h3>
-        <script>
-          var month = new Array();
-          month[0] = "January";
-          month[1] = "February";
-          month[2] = "March";
-          month[3] = "April";
-          month[4] = "May";
-          month[5] = "June";
-          month[6] = "July";
-          month[7] = "August";
-          month[8] = "September";
-          month[9] = "October";
-          month[10] = "November";
-          month[11] = "December";
-
-          var d = new Date();
-          var n = month[d.getMonth()+1];
-          document.getElementById("n_month").innerHTML = n;
-        </script> -->
-        <div class="month">      
-          <ul>
-            <li>
-              May<br>
-              <span style="font-size:18px">2019</span>
-            </li>
-          </ul>
+        <div id="calendar-container">
+          <div id="calendar-header">
+            <span id="calendar-month-year"></span>
+          </div>
+          <div id ="calendar-dates">
+          </div>
         </div>
-
-        <ul class="weekdays">
-          <li>Su</li>
-          <li>Mo</li>
-          <li>Tu</li>
-          <li>We</li>
-          <li>Th</li>
-          <li>Fr</li>
-          <li>Sa</li>
-        </ul>
-
-        <ul class="days">  
-          <li>  </li>  
-          <li>  </li>  
-          <li>  </li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li>7</li>
-          <li>8</li>
-          <li>9</li>
-          <li>10</li>
-          <li>11</li>
-          <li>12</li>
-          <li>13</li>
-          <li>14</li>
-          <li>15</li>
-          <li>16</li>
-          <li>17</li>
-          <li>18</li>
-          <li>19</li>
-          <li>20</li>
-          <li>21</li>
-          <li>22</li>
-          <li>23</li>
-          <li>24</li>
-          <li>25</li>
-          <li>26</li>
-          <li>27</li>
-          <li>28</li>
-          <li>29</li>
-          <li>30</li>
-          <li>31</li>
-        </ul>
     </div>
   </div>
 </div>
-
-  <!-- <div class="month">      
-    <ul>
-      <li>
-        April<br>
-        <span style="font-size:18px">2019</span>
-      </li>
-    </ul>
-  </div>
-
-  <ul class="weekdays">
-    <li>Mo</li>
-    <li>Tu</li>
-    <li>We</li>
-    <li>Th</li>
-    <li>Fr</li>
-    <li>Sa</li>
-    <li>Su</li>
-  </ul>
-
-  <ul class="days">  
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-    <li>4</li>
-    <li>5</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-    <li>10</li>
-    <li>11</li>
-    <li>12</li>
-    <li>13</li>
-    <li>14</li>
-    <li>15</li>
-    <li>16</li>
-    <li>17</li>
-    <li>18</li>
-    <li>19</li>
-    <li>20</li>
-    <li>21</li>
-    <li>22</li>
-    <li>23</li>
-    <li>24</li>
-    <li><span class="active">25</span></li>
-    <li>26</li>
-    <li>27</li>
-    <li>28</li>
-    <li>29</li>
-    <li>30</li>
-    <li>31</li>
-  </ul> -->
-
-
-
-
-
-
 
 <div style="margin-left:25%">
 <!-- ... page content ... -->

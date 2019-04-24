@@ -160,7 +160,6 @@ tr:nth-child(even) {
       <img src="../img/Logo Transparent.png" alt="PlanIt Logo" class="img" style="width:250px;height:112.5px;" align = right>
     </div>
 
-
     <div id="mySidebar" class="sidebar" align = left float = left display = inline>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="index.html">Homepage</a>
@@ -223,16 +222,11 @@ tr:nth-child(even) {
       </div>
 </div>
 
-<table>
+<table id="grade_table">
   <tr>
     <th>Class</th>
     <th>Assignment</th>
     <th>Grade</th>
-  </tr>
-  <tr>
-    <td id="class_table"></td>
-    <td id="assignment_table"></td>
-    <td id="grade_table"></td>
   </tr>
   </table>
 
@@ -242,6 +236,12 @@ tr:nth-child(even) {
     var btn = document.getElementById("myBtn");
     var span = document.getElementsByClassName("close")[0];
     var create = document.getElementById("enter_grade");
+
+    function delete_grade(o) {
+      //Source: https://stackoverflow.com/questions/11553768/remove-table-row-after-clicking-table-row-delete-button
+      var p=o.parentNode.parentNode;
+      p.parentNode.removeChild(p);
+    }
 
     btn.onclick = function() {
       modal.style.display = "block"; //Displays the modal
@@ -255,12 +255,21 @@ tr:nth-child(even) {
         modal.style.display = "none"; //Closes modal
       }
       create.onclick = function() {
-        document.getElementById("class_table").innerHTML = document.getElementById("class_name").value; //Populates table with class name
+        var table = document.getElementById("grade_table");
+        var row = table.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var delete_button = '<button onclick="delete_grade(this)">Delete</button>';
+        cell1.innerHTML = document.getElementById("class_name").value; //Populates table with class name
         class_name.value = ""; //Reset class name
-        document.getElementById("assignment_table").innerHTML = document.getElementById("assignment_name").value; //Populates table with assignment name
+        cell2.innerHTML = document.getElementById("assignment_name").value; //Populates table with assignment name
         assignment_name.value = ""; //Reset assignment name
-        document.getElementById("grade_table").innerHTML = document.getElementById("grade_value").value; //Populates table with grade 
-        grade_value.value = ""; //Reset grade 
+        cell3.innerHTML = document.getElementById("grade_value").value; //Populates table with grade
+        grade_value.value = ""; //Reset grade
+        cell4.innerHTML = delete_button;
+        modal.style.display = "none"; //Closes modal
       }
 
   </script>
