@@ -26,7 +26,7 @@ var pgp = require('pg-promise')();
 **********************/
 
 
-var db = pgp(process.env.DATABASE_URL);
+var db = pgp(process.env.DATABASE_URL || {host: 'localhost', user: 'postgres', password: 'newpassword', database: 'planit'});
 app.set('view engine', 'html');
 app.use(express.static(__dirname + '/'));//This line is necessary for us to use relative paths and access our resources directory
 
@@ -106,11 +106,9 @@ app.post('/views/login/authenticate', function(req, res) { //when you get a requ
     })
     .then(info => {
         if(info[0][0]){
-          res.render('index.html', {
-            user: info[0][0]
-          });
+          res.redirect('../index.html');
         } else {
-          res.render('../login.html');
+          res.redirect('../login.html');
         }
 
     })
