@@ -252,6 +252,12 @@ tr:nth-child(even) {
   var span = document.getElementsByClassName("close")[0];
   var create = document.getElementById("create_assignment");
 
+  function delete_assignment(o) {
+    //Source: https://stackoverflow.com/questions/11553768/remove-table-row-after-clicking-table-row-delete-button
+    var p=o.parentNode.parentNode;
+    p.parentNode.removeChild(p);
+  }
+
   btn.onclick = function() {
     modal.style.display = "block"; //Displays the modal
   }
@@ -272,7 +278,10 @@ tr:nth-child(even) {
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     var cell5 = row.insertCell(4);
-    var check = '<input type="checkbox" id="complete" value="no">';
+    var cell6 = row.insertCell(5);
+    var check = '<input type="checkbox">';
+    var delete_button = '<button onclick="delete_assignment(this)">Delete</button>';
+
     cell1.innerHTML = document.getElementById("assignment_name").value; //Populates table with assignment name
     assignment_name.value = ""; //Reset assignment name
     cell2.innerHTML = document.getElementById("due_date").value; //Populates table with due date
@@ -321,11 +330,11 @@ tr:nth-child(even) {
     }
 
     cell5.innerHTML = check;
+    cell6.innerHTML = delete_button;
     document.getElementById("p3").checked = "true"; //Reset check boxes
     $("select").each(function() { this.selectedIndex = 0 }); //Resets reminder
     modal.style.display = "none"; //Closes modal
   }
-
 //-------------------------------------------------------------------------------------------------------------
   var selection = document.getElementByName("dropdown")[0].value;
   if(selection.value == "1hr") //Sends alert depending on reminder time chosen
