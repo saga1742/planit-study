@@ -110,7 +110,7 @@ app.post('/views/login/authenticate', function(req, res) { //when you get a requ
             user: info[0][0]
           });
         } else {
-          res.redirect('../login.html');
+          res.render('../login.html');
         }
 
     })
