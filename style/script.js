@@ -2,7 +2,7 @@
 window.onload = function()
 {
 	var d = new Date();
-	var month_name = ['January','Februrary','March','April','May','June','July','August','Sepetmeber','October','Novemeber','Decemeber'];		
+	var month_name = ['January','Februrary','March','April','May','June','July','August','Septmeber','October','Novemeber','Decemeber'];		
 	var month = d.getMonth(); //current month
 	var year = d.getFullYear(); //current year
 	var first_date = month_name[month] + " " + 1 + " " + year;
