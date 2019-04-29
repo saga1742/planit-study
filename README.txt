@@ -1,3 +1,5 @@
+README (MONDAY, 29 APRIL 2019)
+
 PURPOSE:
 PlanIt Study Assistant is an online planner for students at the high school and university levels. Since most school work is conducted online these days, we’re hoping to bring online planners to the same medium as course assignments and class pages. PlanIt is a central hub for students to track due dates, assignments reminders, assignment to-do lists, and their grades.
 
